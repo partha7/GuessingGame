@@ -54,6 +54,14 @@ class GameFragment : Fragment() {
             binding.wordText.text = newWord.toString()
         })
 
+        viewModel.hasGameFinished.observe(viewLifecycleOwner, Observer { hasGameFinished ->
+            if(hasGameFinished){
+                gameFinished()
+                viewModel.gameFinishedOver()
+            }
+            println("Not yet over")
+        })
+
         return binding.root
 
     }
